@@ -2,7 +2,7 @@
 /**
  * 权限验证公共类
  * 
- * @author: honglinzi
+ * @author: dayu
  * @version: 1.0
  */
 namespace app\admin\common;

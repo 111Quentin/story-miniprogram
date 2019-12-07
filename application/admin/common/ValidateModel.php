@@ -2,7 +2,7 @@
 /**
  * 模型数据验证公共类
  * 
- * @author: honglinzi
+ * @author: dayu
  * @version: 1.0
  */
 

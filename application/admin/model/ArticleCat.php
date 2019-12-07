@@ -3,7 +3,7 @@
 /**
  * ArticleCat模型
  * 
- * @author: honglinzi
+ * @author: dayu
  * @version: 1.0
  */
 

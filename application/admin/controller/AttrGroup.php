@@ -2,7 +2,7 @@
 /**
  * 属性分组管理
  * 
- * @author: honglinzi
+ * @author: dayu
  * @version: 1.0
  */
 

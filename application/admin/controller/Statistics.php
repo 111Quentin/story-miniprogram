@@ -3,7 +3,7 @@
 /**
  * 数据统计管理
  * 
- * @author: honglinzi
+ * @author: dayu
  * @version: 1.0
  */
 

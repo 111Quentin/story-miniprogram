@@ -3,7 +3,7 @@
 /**
  * 后台图片上传接口
  * 
- * @author: honglinzi
+ * @author: dayu
  * @version: 1.0
  */
 
@@ -20,6 +20,9 @@ class Api extends Purview
     protected $limit = 1000 * 1024;
     //允许上传的图片类型
     protected $allowExt = 'jpeg,jpg,png,gif';
+    // 允许上传的语音类型
+    protected $music_allowExt = 'mp3,wav,mp4';
+
     /**
      * 处理普通上传，如文章页的上传
      * 
@@ -27,7 +30,7 @@ class Api extends Purview
      */
     public function upload()
     {
-        $path = $this->path . 'article/';
+        $path = $this->path . 'story/';
         $file = request()->file('file');
 
         $rs = ['code' => 1, 'msg' => '上传失败', 'data' => ['src' => '']];
@@ -94,6 +97,34 @@ class Api extends Purview
             $rs['msg'] = '上传成功';
             $rs['data']['src'] = substr($info->getPathName(), 1);
             $rs['data']['thumb_src'] = substr($thumbPath, 1);
+        }
+        else
+        {
+            $rs['msg'] = $file->getError();
+        }
+        return json($rs);
+    }
+
+
+    /**
+     * 处理音频文件的上传
+     * @return void
+     */
+    public function upload_file(){
+        $type = $this->request->param('type');
+        if(!$type){
+            $type = 'pt';
+        }
+        $path = $this->path . 'music/'.$type.'/';
+        $this->limit = 1000 * 1024 * 100;
+        $file = request()->file('file');
+        $rs = ['code' => 1, 'msg' => '上传失败', 'data' => ['src' => '']];
+        $info = $file->validate(['size' => $this->limit, 'ext' => $this->music_allowExt])->move($path);
+        if ($info)
+        {
+            $rs['code'] = 0;
+            $rs['msg'] = '上传成功';
+            $rs['data']['src'] = substr($info->getPathName(), 1);
         }
         else
         {

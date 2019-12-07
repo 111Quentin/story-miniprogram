@@ -2,7 +2,7 @@
 /**
  * 商品属性管理
  * 
- * @author: honglinzi
+ * @author: dayu
  * @version: 1.0
  */
 namespace app\admin\controller;

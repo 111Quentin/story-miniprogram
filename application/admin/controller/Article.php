@@ -3,7 +3,7 @@
 /**
  * 文章管理
  * 
- * @author: honglinzi
+ * @author: dayu
  * @version: 1.0
  */
 
@@ -34,7 +34,6 @@ class Article extends Purview
             $query = ['query' => ['title' => $title]];
         }
         $list = $model->order('id', 'desc')->paginate(10, false, $query);
-
         $page = $list->render();
         $this->assign('list', $list);
         $this->assign('title', $title);

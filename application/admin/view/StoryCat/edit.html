@@ -1,0 +1,71 @@
+{include file='head'}
+    <body>
+        <div class="wrap-container">
+            <form class="layui-form" action="/admin/StoryCat/doEdit/id/{$records.sid}" method="post" style="width: 96%;padding-top: 20px;">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">分类名：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="StoryCat[type_name]" value="{$records.type_name}"  lay-verify="required" placeholder="请输入分类名" class="layui-input">
+                    </div>
+                </div>
+                
+                <div class="layui-form-item">
+                    <label class="layui-form-label">图像上传：</label>
+                    <div class="layui-input-block">
+                        <button type="button" name='myfile' class="layui-btn" id="upload">
+                            <i class="layui-icon">&#xe67c;</i>上传图片
+                        </button>
+                        <input type="hidden" name="StoryCat[pic]"  value='{$records.pic}' id="pic">
+                        <div id="ImgPreview" style="margin-top: 10px;">
+                            {if $records.pic <> ''}
+                            <a href='javascript:;' class="photo">
+                                <img src="{$records.pic}"  layer-src="{$records.pic}"  />
+                            </a>
+                            {/if}
+                        </div>
+                    </div>
+                </div>   
+                
+                <div class="layui-form-item">
+                    <label class="layui-form-label">备注：</label>
+                    <div class="layui-input-block">
+                         <textarea name="StoryCat[desc]" class="layui-textarea" placeholder="请输入备注" >{$records.desc}</textarea>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        
+        <script>
+            layui.use(['jquery', 'layedit', 'upload', 'form'], function () {
+                var upload = layui.upload;
+                var $ = layui.jquery;
+                //执行实例
+                var uploadObj = upload.render({
+                    elem: '#upload',
+                    accept: 'file',
+                    field: 'file',
+                    url: '/admin/Api/upload',
+                    done: function (res) {
+                        if (res.code === 0) {
+                            $('#pic').val(res.data.src)
+                            $('#ImgPreview').html('<a href="javascript:;" class="photo"><img src="' + res.data.src + '" layer-src="'+res.data.src+'"></a>');
+                        } else {
+                            layer.alert(res.msg, {title: '最终的提交信息'});
+                        }
+                    },
+                    error: function (res) {
+                        return;
+                    }
+                });
+            });
+    
+        </script>     
+    </body>
+</html>

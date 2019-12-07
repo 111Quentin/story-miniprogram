@@ -72,8 +72,9 @@
             </div>
         </form>   
    <script>
-        layui.use(['layedit', 'upload'], function () {
+        layui.use(['jquery','layedit', 'upload'], function () {
             var upload = layui.upload;
+            var $ = layui.jquery;
             //执行实例
             var uploadObj = upload.render({
                 elem: '#upload',
