@@ -163,7 +163,7 @@ class Database extends Purview
             }
             else
             {
-                return $this->success('备份成功' . $error, '/admin/Database/backup', '', 10);
+                return $this->success('备份成功' . $error, '/admin/Database/index', '', 10);
             }
         }
         else

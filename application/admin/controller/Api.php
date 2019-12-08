@@ -21,7 +21,7 @@ class Api extends Purview
     //允许上传的图片类型
     protected $allowExt = 'jpeg,jpg,png,gif';
     // 允许上传的语音类型
-    protected $music_allowExt = 'mp3,wav,mp4,m4a';
+    protected $music_allowExt = 'mp3,m4a,wav,mp4';
 
     /**
      * 处理普通上传，如文章页的上传
