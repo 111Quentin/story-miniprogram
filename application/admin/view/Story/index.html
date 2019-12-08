@@ -28,7 +28,7 @@
 
                 </form>
                 <form action='/admin/Story/batchDel/' method='post' id="batchdel-btn" class="layui-form"/>
-                <div class="layui-form" id="table-list"  >
+                <div class="layui-form" id="table-list">
                     <table class="layui-table" >
                         <colgroup>
                             <col width="50">
@@ -36,7 +36,7 @@
                             <col>
                             <col width="150">
                             <col width="150">
-                            <col width="80">
+                            <col width="150">
                             <col width="150">
                         </colgroup>
                         <thead>
@@ -45,8 +45,9 @@
                                 <th>ID</th>
                                 <th>名称</th>
                                 <th>文章分类</th>
+                                <th>背景图</th>
                                 <th>创建时间</th>
-                                <th>状态</th>
+                                <th>更新时间</th>
                                 <th>操作</th>
                             </tr>
                         </thead>
@@ -58,8 +59,14 @@
                                 <td>{$myList.id}</td>
                                 <td>{$myList.title}</td>
                                 <td>{$myList.StoryCat.type_name}</td>
+                                <td>{if $myList.pic <> ''}
+                                    <a href="{$myList.pic}" class="photo" target="_blank">
+                                        <img src="{$myList.pic}"  layer-src="{$myList.pic}"  />
+                                       
+                                    </a>
+                                    {/if}</td>
                                 <td>{$myList.created_time|date='Y-m-d'}</td>
-                                <td>正常</td>
+                                <td>{$myList.updated_time|date='Y-m-d'}</td>
                                 <td>
                                     <div class="layui-inline">
                                         <a href='/admin/Story/edit/id/{$myList.id}'>

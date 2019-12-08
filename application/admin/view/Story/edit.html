@@ -35,7 +35,7 @@
                 <input type="hidden" name="story[pic]"  value='{$story.pic}' id="pic">
                 <div id="ImgPreview" style="margin-top: 10px;">
                     {if $story.pic <> ''}
-                    <a href='javascript:;' class="photo">
+                    <a href="{$story.pic}" class="photo" target="_blank">
                         <img src="{$story.pic}"  layer-src="{$story.pic}"  />
                        
                     </a>
@@ -110,7 +110,7 @@
                 done: function (res) {
                     if (res.code === 0) {
                         $('#pic').val(res.data.src)
-                        $('#ImgPreview').html('<a href="' + res.data.src + '"class="photo" target="_blank"><h2>' + res.data.src + '</h2></a>');
+                        $('#ImgPreview').html('<a href="'+res.data.src+'"class="photo" target="_blank"><img src="'+res.data.src+'" layer-src="'+res.data.src+'"></a>');
                     } else {
                         layer.alert(res.msg, {title: '最终的提交信息'});
                     }

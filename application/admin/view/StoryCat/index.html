@@ -1,17 +1,20 @@
 {include file='head'}
-
     <body>
         <div class="wrap-container clearfix"  id="table-list">
             <div class="column-content-detail">
+                <form class="layui-form" action="/admin/StoryCat/index" method="get">
                     <div class="email-tool-btn clearfix">
                         <div  style="float:left">
+                            <button class="layui-btn layui-btn-small layui-btn-primary  batchdel-btn">
+                                        <i class="layui-icon">&#xe640;</i>
+                            </button>
                             <button class="layui-btn layui-btn-small layui-btn-primary add-btn" data-height='350'  data-url="/admin/StoryCat/add">
                                 <i class="layui-icon">&#xe654;</i>
                             </button>                            
                         </div>
                         <div style="clear:both;"></div>
 
-                        <form class="layui-form" action="/admin/StoryCat/index" method="get">
+                        
                             <div style="float:right">
                                 <div class="layui-form-item">
                                     <div class="layui-inline">
@@ -22,51 +25,59 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                    </div>                
+                    </form>
+                </div>                
              
-                <div class="layui-form">
-                    <table class="layui-table">
-                        <colgroup>
-                            <col><col><col><col>
-                        </colgroup>
-                        <thead>
-                            <tr>
-                                <th>sid</th>
-                                <th>分类名</th>
-                                <th>背景图</th> 
-                                <th>备注</th>
-                                <th>创建时间</th> 
-                                <th>更新时间</th> 
-                                <th>操作</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {foreach name='list' item='myList'}
-                            <tr>
-                                <td>{$myList.sid}</td>
-                                <td>{$myList.type_name}</td>
-                                <td>{$myList.pic}</td> 
-                                <td>{$myList.desc}</td> 
-                                <td>{$myList.created_time|date="Y-m-d H:i:s"}</td>
-                                <td>{$myList.updated_time|date="Y-m-d H:i:s"}</td>
-                                <td><a href="javascript:" data-url="/admin/StoryCat/edit/id/{$myList.sid }" data-height="350" class="edit-btn">
-                              <i class="layui-icon">&#xe642;</i>&nbsp;
-                         </a>
-                         <a href="javascript:" data-url="/admin/StoryCat/del/id/{$myList.sid}" class="del-btn">
-                                 &nbsp;<i class="layui-icon">&#xe640;</i>
-                         </a></td>
-                            </tr>
-                            {/foreach}
-                        </tbody>
-                    </table>
+                <form action='/admin/StoryCat/batchDel/' method='post' id="batchdel-btn" class="layui-form"/>
+                    <div class="layui-form">
+                        <table class="layui-table" id="table-list">
+                            <colgroup>
+                                <col><col><col><col>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" name="all" lay-skin="primary" lay-filter="allChoose"></th>    
+                                    <th>sid</th>
+                                    <th>分类名</th>
+                                    <th>背景图</th> 
+                                    <th>备注</th>
+                                    <th>创建时间</th> 
+                                    <th>更新时间</th> 
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {foreach name='list' item='myList'}
+                                <tr>
+                                    <td><input type="checkbox" value='{$myList.sid}' name="id[]" lay-skin="primary"></td>
+                                    <td>{$myList.sid}</td>
+                                    <td>{$myList.type_name}</td>
+                                    <td>{if $myList.pic <> ''}
+                                        <a href="{$myList.pic}" class="photo" target="_blank">
+                                            <img src="{$myList.pic}"  layer-src="{$myList.pic}"  />
+                                        
+                                        </a>
+                                        {/if}</td> 
+                                    <td>{$myList.desc}</td> 
+                                    <td>{$myList.created_time|date="Y-m-d H:i:s"}</td>
+                                    <td>{$myList.updated_time|date="Y-m-d H:i:s"}</td>
+                                    <td><a href="javascript:" data-url="/admin/StoryCat/edit/id/{$myList.sid }" data-height="350" class="edit-btn">
+                                <i class="layui-icon">&#xe642;</i>&nbsp;
+                            </a>
+                            <a href="javascript:" data-url="/admin/StoryCat/del/id/{$myList.sid}" class="del-btn">
+                                    &nbsp;<i class="layui-icon">&#xe640;</i>
+                            </a></td>
+                                </tr>
+                                {/foreach}
+                            </tbody>
+                        </table>
 
-                    <div style='text-align: right;'>
-                        {$page|raw}
+                        <div style='text-align: right;'>
+                            {$page|raw}
+                        </div>
+
                     </div>
-
-                </div>
-              
+                </form>
             </div>
         </div>
     </body>

@@ -17,11 +17,11 @@ class Api extends Purview
 
     protected $path = './uploads/';
     //图片大小
-    protected $limit = 1000 * 1024;
+    protected $limit = 1000 * 1024 * 10;
     //允许上传的图片类型
     protected $allowExt = 'jpeg,jpg,png,gif';
     // 允许上传的语音类型
-    protected $music_allowExt = 'mp3,wav,mp4';
+    protected $music_allowExt = 'mp3,wav,mp4,m4a';
 
     /**
      * 处理普通上传，如文章页的上传

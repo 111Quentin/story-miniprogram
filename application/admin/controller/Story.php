@@ -33,7 +33,7 @@ class Story extends Purview
             $model = $model->where('title', 'like', '%'.$title.'%');
             $query = ['query' => ['title' => $title]];
         }
-        $list = $model->order('id', 'desc')->paginate(10, false, $query);
+        $list = $model->order('id', 'desc')->paginate(5, false, $query);
         $page = $list->render();
         $this->assign('list', $list);
         $this->assign('title', $title);
@@ -105,6 +105,18 @@ class Story extends Purview
                     unlink($pic);
                 }
             }
+            if($model->pt_path){
+                $pt_path = '.' . $model->pt_path;
+                if(file_exists($pt_path)){
+                    unlink($pt_path);
+                }
+            }
+            if($model->yy_path){
+                $yy_path = '.' . $model->yy_path;
+                if(file_exists($yy_path)){
+                    unlink($yy_path);
+                }
+            }
             return true;
         }
         return false;
@@ -158,12 +170,51 @@ class Story extends Purview
                         unlink($oldPic);
                     }
                 }
+
+                // 语音文件修改则删除旧文件
+                if ($myStory->pt_path != '' && $myStory->pt_path != $data['pt_path'])
+                {
+                    $oldPt_path = '.' . $myStory->pt_path;
+                    if (file_exists($oldPt_path))
+                    {
+                        unlink($oldPt_path);
+                    }
+                }
+
+                if ($myStory->yy_path != '' && $myStory->yy_path != $data['yy_path'])
+                {
+                    $oldYy_path = '.' . $myStory->pt_path;
+                    if (file_exists($oldYy_path))
+                    {
+                        unlink($oldYy_path);
+                    }
+                }
+
                 if ($myStory->save($data))
                 {
                     return $this->success('操作成功', 'admin/Story/index');
                 }
                 else
                 {
+                    // 修改数据失败，也删除对应的图片和文件
+                    if(!$data['pic']){
+                        $nowPic = '.' . $data['pic'];
+                        if(file_exists($nowPic)){
+                            unlink($nowPic);
+                        }
+                    }
+                    if(!$data['pt_path']){
+                        $nowPt_path = '.' . $data['pt_path'];
+                        if(file_exists($nowPt_path)){
+                            unlink($nowPt_path);
+                        }
+                    }
+                    if(!$data['yy_path']){
+                        $nowYy_path = '.' . $data['yy_path'];
+                        if(file_exists($nowYy_path)){
+                            unlink($nowYy_path);
+                        }
+                    }
                     return $this->error($myStory->getError(), 'admin/Story/edit/id/' . $id);
                 }
             }
