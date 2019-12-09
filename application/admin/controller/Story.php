@@ -250,7 +250,26 @@ class Story extends Purview
             return $this->success('操作成功', 'admin/Story/index');
         }
         else
-        {
+        {   
+            // 修改数据失败，也删除对应的图片和文件
+            if(!$data['pic']){
+                $nowPic = '.' . $data['pic'];
+                if(file_exists($nowPic)){
+                    unlink($nowPic);
+                }
+            }
+            if(!$data['pt_path']){
+                $nowPt_path = '.' . $data['pt_path'];
+                if(file_exists($nowPt_path)){
+                    unlink($nowPt_path);
+                }
+            }
+            if(!$data['yy_path']){
+                $nowYy_path = '.' . $data['yy_path'];
+                if(file_exists($nowYy_path)){
+                    unlink($nowYy_path);
+                }
+            }
             return $this->error($myStory->getError(), 'admin/Story/add');
         }
     }

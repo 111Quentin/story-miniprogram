@@ -134,6 +134,13 @@ class StoryCat extends Purview
                 }
                 else
                 {
+                    // 添加失败，删除新上传的图片
+                    if($data['pic']){
+                        $nowPic = '.' . $data['pic'];
+                        if (file_exists($nowPic)){
+                            unlink($nowPic);
+                        }
+                    }
                     return $this->error($myModel->getError(), '/admin/StoryCat/edit/id/' . $id);
                 }
             }
