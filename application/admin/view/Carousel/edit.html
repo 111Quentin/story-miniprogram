@@ -1,0 +1,68 @@
+{include file='head'}
+<body>
+    <form action='/admin/Carousel/doEdit/id/{$carousel.id}' method='post'  class="layui-form column-content-detail">
+       
+        <div class="layui-form-item">
+            <label class="layui-form-label">分类栏目：</label>
+            <div class="layui-input-block">
+                <select name="carousel[story_id]" lay-verify="required">
+                    <option value="">请选择故事跳转</option>
+                    {foreach name='story' item='s'}
+                    <option value="{$s.id}" {if $s.id eq $carousel.story_id}selected{/if}>{$s.title}</option>
+                    {/foreach}
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">图像上传：</label>
+            <div class="layui-input-block">
+                <button type="button" name='myfile' class="layui-btn" id="upload">
+                    <i class="layui-icon">&#xe67c;</i>上传图片
+                </button>
+                <input type="hidden" name="carousel[pic]"  value='{$carousel.pic}' id="pic">
+                <div id="ImgPreview" style="margin-top: 10px;">
+                    {if $carousel.pic <> ''}
+                    <a href="{$carousel.pic}" class="photo" target="_blank">
+                        <img src="{$carousel.pic}"  layer-src="{$carousel.pic}"  />
+                    </a>
+                    {/if}
+                </div>
+            </div>
+        </div> 
+    
+        <div class="layui-form-item" style="padding-left: 10px;">
+            <div class="layui-input-block">
+                <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                <button class="layui-btn layui-btn-small layui-btn-primary go-btn" data-url="/admin/Carousel/index">返回</button>
+            </div>
+        </div>
+    </form>
+    <script>
+        layui.use(['jquery', 'layedit', 'upload', 'form'], function () {
+            var upload = layui.upload;
+            var $ = layui.jquery;
+            //执行实例
+            var uploadObj = upload.render({
+                elem: '#upload',
+                accept: 'file',
+                field: 'file',
+                url: '/admin/Api/upload?type=banner',
+                done: function (res) {
+                    if (res.code === 0) {
+                        $('#pic').val(res.data.src)
+                        $('#ImgPreview').html('<a href="'+res.data.src+'"class="photo" target="_blank"><img src="'+res.data.src+'" layer-src="'+res.data.src+'"></a>');
+                    } else {
+                        layer.alert(res.msg, {title: '最终的提交信息'});
+                    }
+                },
+                error: function (res) {
+                    return;
+                }
+            });
+        });
+
+    </script>        
+</body>
+</html>

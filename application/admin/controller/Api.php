@@ -30,7 +30,11 @@ class Api extends Purview
      */
     public function upload()
     {
-        $path = $this->path . 'story/';
+        $type = $this->request->param('type');
+        if(!$type){
+            $path = $this->path . 'story/';
+        }
+        $path = $this->path .$type . '/';
         $file = request()->file('file');
 
         $rs = ['code' => 1, 'msg' => '上传失败', 'data' => ['src' => '']];
