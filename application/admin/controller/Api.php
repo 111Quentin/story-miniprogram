@@ -32,18 +32,19 @@ class Api extends Purview
     {
         $type = $this->request->param('type');
         if(!$type){
-            $path = $this->path . 'story/';
+            $path = $this->path . 'story';
         }
-        $path = $this->path .$type . '/';
+        $path = $this->path .$type;
         $file = request()->file('file');
-
         $rs = ['code' => 1, 'msg' => '上传失败', 'data' => ['src' => '']];
         $info = $file->validate(['size' => $this->limit, 'ext' => $this->allowExt])->move($path);
+        $pathName = substr($info->getPathName(), 1);
+        $pathName = str_replace("\\","/",$pathName);
         if ($info)
         {
             $rs['code'] = 0;
             $rs['msg'] = '上传成功';
-            $rs['data']['src'] = substr($info->getPathName(), 1);
+            $rs['data']['src'] = $pathName;
         }
         else
         {
@@ -58,16 +59,18 @@ class Api extends Purview
      */
     public function editor()
     {
-        $path = $this->path . 'other/';
+        $path = $this->path . 'other';
         $file = request()->file('file');
 
         $rs = ['code' => 1, 'msg' => '上传失败', 'data' => ['src' => '']];
         $info = $file->validate(['size' => $this->limit, 'ext' => $this->allowExt])->move($path);
+        $pathName = substr($info->getPathName(), 1);
+        $pathName = str_replace("\\","/",$pathName);
         if ($info)
         {
             $rs['code'] = 0;
             $rs['msg'] = '上传成功';
-            $rs['data']['src'] = substr($info->getPathName(), 1);
+            $rs['data']['src'] = $pathName;
         }
         else
         {
@@ -119,16 +122,18 @@ class Api extends Purview
         if(!$type){
             $type = 'pt';
         }
-        $path = $this->path . 'music/'.$type.'/';
+        $path = $this->path . 'music/'.$type;
         $this->limit = 1000 * 1024 * 100;
         $file = request()->file('file');
         $rs = ['code' => 1, 'msg' => '上传失败', 'data' => ['src' => '']];
         $info = $file->validate(['size' => $this->limit, 'ext' => $this->music_allowExt])->move($path);
+        $pathName = substr($info->getPathName(), 1);
+        $pathName = str_replace("\\","/",$pathName);
         if ($info)
         {
             $rs['code'] = 0;
             $rs['msg'] = '上传成功';
-            $rs['data']['src'] = substr($info->getPathName(), 1);
+            $rs['data']['src'] = $pathName;
         }
         else
         {

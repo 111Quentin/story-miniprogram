@@ -34,4 +34,11 @@ class Story extends ValidateModel
         return $this->belongsTo('StoryCat');
     }
 
+    // 通过页码获取数据
+    public static function getStoryByPage($page=1, $size=20){
+        $pagingData = self::where('is_hot','=',1)->order('created_time desc')
+            ->paginate($size, true, ['page' => $page])->toArray();
+        return $pagingData;
+    }
+
 }

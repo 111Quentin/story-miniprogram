@@ -9,12 +9,35 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-Route::get('think', function () {
-    return 'hello,ThinkPHP5!';
-});
 
-Route::get('hello/:name', 'index/hello');
 
-return [
 
-];
+
+//Banner
+Route::get('api/banner', 'api/Banner/getBanner');
+
+
+//Story 
+Route::get('api/Story/paginate', 'api/Story/getHotStory');
+
+//Token
+// Route::post('api/token/user', 'api/Token/getToken');
+// Route::post('api/token/app', 'api/Token/getAppToken');
+// Route::post('api/token/verify', 'api/Token/verifyToken');
+
+
+
+
+
+
+
+
+// Route::get('think', function () {
+//     return 'hello,ThinkPHP5!';
+// });
+
+// Route::get('hello/:name', 'index/hello');
+
+// return [
+
+// ];
