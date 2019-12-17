@@ -32,9 +32,10 @@ class Api extends Purview
     {
         $type = $this->request->param('type');
         if(!$type){
-            $path = $this->path . 'story';
+            $path = $this->path.'story';
+        }else{
+            $path = $this->path .$type;
         }
-        $path = $this->path .$type;
         $file = request()->file('file');
         $rs = ['code' => 1, 'msg' => '上传失败', 'data' => ['src' => '']];
         $info = $file->validate(['size' => $this->limit, 'ext' => $this->allowExt])->move($path);

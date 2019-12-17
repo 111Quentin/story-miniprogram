@@ -18,8 +18,8 @@ Route::get('api/banner', 'api/Banner/getBanner');
 
 
 //Story 
-Route::get('api/Story/paginate', 'api/Story/getHotStory');
-
+Route::get('api/HotStory/paginate', 'api/Story/getHotStory');
+Route::get('api/TopStory/paginate', 'api/Story/getTopStory');
 //Token
 // Route::post('api/token/user', 'api/Token/getToken');
 // Route::post('api/token/app', 'api/Token/getAppToken');

@@ -34,10 +34,31 @@ class Story extends ValidateModel
         return $this->belongsTo('StoryCat');
     }
 
-    // 通过页码获取数据
-    public static function getStoryByPage($page=1, $size=20){
+    // 通过页码获取热门推荐数据
+    public static function getHotStoryByPage($page=1, $size=20){
         $pagingData = self::where('is_hot','=',1)->order('created_time desc')
             ->paginate($size, true, ['page' => $page])->toArray();
+        $data = array();
+        foreach($pagingData['data'] as $val){
+            $val['created_time'] = date('Y-m-d',$val['created_time']);
+            $val['updated_time'] = date('Y-m-d',$val['updated_time']);
+            $data[] = $val;
+        }
+        $pagingData['data'] = $data;
+        return $pagingData;
+    }
+
+    // 通过页码获取最新故事数据
+    public static function getTopStoryByPage($page=1, $size=20){
+        $pagingData = self::where('is_top','=',1)->order('created_time desc')
+            ->paginate($size, true, ['page' => $page])->toArray();
+        $data = array();
+        foreach($pagingData['data'] as $val){
+            $val['created_time'] = date('Y-m-d',$val['created_time']);
+            $val['updated_time'] = date('Y-m-d',$val['updated_time']);
+            $data[] = $val;
+        }
+        $pagingData['data'] = $data;
         return $pagingData;
     }
 

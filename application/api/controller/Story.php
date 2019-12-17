@@ -18,13 +18,31 @@ use app\lib\exception\SuccessMessage;
 class Story extends BaseController{
 
     /**
-     * 按页获取故事
+     * 按页获取热门推荐故事
      * @return void
      */
     public function getHotStory($page = 1,$size = 4){
         // 检查传递过来的参数
         (new PagingParameter())->goCheck();
-        $Story_list = StoryModel::getStoryByPage($page,$size);
+        $Story_list = StoryModel::getHotStoryByPage($page,$size);
+        if(!$Story_list){
+            throw new MissException([
+                'msg' => '请求story不存在',
+                'errorCode' => 40000
+            ]);
+        }else{
+            $this->show($Story_list);
+        }
+    }
+
+    /**
+     * 按页获取最新故事
+     * @return void
+     */
+    public function getToptory($page = 1,$size = 4){
+        // 检查传递过来的参数
+        (new PagingParameter())->goCheck();
+        $Story_list = StoryModel::getTopStoryByPage($page,$size);
         if(!$Story_list){
             throw new MissException([
                 'msg' => '请求story不存在',
