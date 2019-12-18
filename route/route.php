@@ -19,10 +19,12 @@ Route::get('api/banner', 'api/Banner/getBanner');
 
 // StoryCategory
 Route::get('api/StoryCategory/all','api/StoryCat/getAllCategories');
+Route::get('api/StoryCategory','api/StoryCat/getCategory');
 
 //Story 
 Route::get('api/HotStory/paginate', 'api/Story/getHotStory');
 Route::get('api/TopStory/paginate', 'api/Story/getTopStory');
+Route::get('api/Story/by_category/paginate','api/Story/getByCategory');
 
 
 

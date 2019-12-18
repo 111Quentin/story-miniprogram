@@ -31,4 +31,10 @@ class StoryCat extends ValidateModel
         return $this->hasMany('Story');
     }
 
+    // 获取单个分类资源
+    public static function getCategory($id){
+        $category = self::where('sid',$id)->find();
+        return $category ? $category : [];
+    }
+
 }

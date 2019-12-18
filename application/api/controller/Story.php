@@ -4,10 +4,11 @@
 namespace app\api\controller;
 
 use app\admin\model\Story as StoryModel;
+use app\api\validate\IDMustBePositiveInt;
 use app\lib\exception\MissException;
 use app\api\validate\PagingParameter;
-use app\lib\exception\SuccessMessage;
-
+use app\lib\exception\ParameterException;
+use app\lib\exception\StoryException;
 
 
 /**
@@ -51,5 +52,28 @@ class Story extends BaseController{
         }else{
             $this->show($Story_list);
         }
+    }
+
+
+    /**
+     * 获取分类下所有故事 
+     * @param integer $id
+     * @param integer $page
+     * @param integer $size
+     * @return void
+     */
+    public function getByCategory($id = -1,$page = 1,$size = 4){
+        (new IDMustBePositiveInt())->goCheck();
+        (new PagingParameter())->goCheck();
+        $CateStory = StoryModel::getStoryByCategoryID($id,true,$page,$size);
+        if($CateStory->isEmpty()){
+            // 对于分页最好不要抛出MissException，客户端并不好处理
+            return [
+                'current_page' => $CateStory->currentPage(),
+                'data' => []
+            ];
+        }
+        $data = $CateStory->toArray();
+        $this->show($data);
     }
 }

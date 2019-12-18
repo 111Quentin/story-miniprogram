@@ -34,7 +34,12 @@ class Story extends ValidateModel
         return $this->belongsTo('StoryCat');
     }
 
-    // 通过页码获取热门推荐数据
+    /**
+     * 通过页码获取热门推荐数据
+     * @param integer $page
+     * @param integer $size
+     * @return void
+     */
     public static function getHotStoryByPage($page=1, $size=20){
         $pagingData = self::where('is_hot','=',1)->order('created_time desc')
             ->paginate($size, true, ['page' => $page])->toArray();
@@ -48,7 +53,12 @@ class Story extends ValidateModel
         return $pagingData;
     }
 
-    // 通过页码获取最新故事数据
+    /**
+     * 通过页码获取最新故事数据
+     * @param integer $page
+     * @param integer $size
+     * @return void
+     */
     public static function getTopStoryByPage($page=1, $size=20){
         $pagingData = self::where('is_top','=',1)->order('created_time desc')
             ->paginate($size, true, ['page' => $page])->toArray();
@@ -60,6 +70,27 @@ class Story extends ValidateModel
         }
         $pagingData['data'] = $data;
         return $pagingData;
+    }
+
+    /**
+     * 获取分类下的故事
+     * @param [type] $categoryID
+     * @param boolean $paginate
+     * @param integer $page
+     * @param integer $size
+     * @return void
+     */
+    public static function getStoryByCategoryID($categoryID,$paginate = true,$page = 1,$size = 4){
+        $query = self::where('story_cat_id',$categoryID);
+        if(!$paginate){
+            return $query->select();
+        }else{
+            // paginate 第二参数true表示采用简洁模式，简洁模式不需要查询记录总数
+            return $query->paginate(
+                $size, true, [
+                'page' => $page
+            ]); 
+        }
     }
 
 }

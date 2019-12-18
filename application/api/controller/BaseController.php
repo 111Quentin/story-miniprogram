@@ -2,7 +2,7 @@
 
 namespace app\api\controller;
 use think\Controller;
-
+use think\Exception;
 class BaseController extends Controller{
     
     /**
