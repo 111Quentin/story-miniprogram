@@ -18,7 +18,7 @@ class BaseController extends Controller{
             'msg'  => $msg,
             'data'  => $data
         );
-        if(!is_array($data) || !$data){
+        if(!$data){
             $res['code'] = '404';
             $res['msg'] = '获取数据有误!';
             echo json_encode($res);

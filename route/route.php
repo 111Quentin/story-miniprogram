@@ -17,9 +17,17 @@
 Route::get('api/banner', 'api/Banner/getBanner');
 
 
+// StoryCategory
+Route::get('api/StoryCategory/all','api/StoryCat/getAllCategories');
+
 //Story 
 Route::get('api/HotStory/paginate', 'api/Story/getHotStory');
 Route::get('api/TopStory/paginate', 'api/Story/getTopStory');
+
+
+
+
+
 //Token
 // Route::post('api/token/user', 'api/Token/getToken');
 // Route::post('api/token/app', 'api/Token/getAppToken');
