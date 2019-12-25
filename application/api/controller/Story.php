@@ -86,7 +86,7 @@ class Story extends BaseController{
     public function getOne($id){
         (new IDMustBePositiveInt())->goCheck();
         $story = StoryModel::getStoryDetail($id);
-         // 使用抛出异常处理
+        // 使用抛出异常处理
          if(empty($story)){
             throw new MissException([
                 'msg' => 'story not found'
@@ -105,8 +105,14 @@ class Story extends BaseController{
     public function getPreNext($id){
         // id校验
         (new IDMustBePositiveInt())->goCheck();
-        $pre_story = StoryModel::getPreNextStory($id);
-         
-        echo json_encode($pre_story);
+        $PreNext_story = StoryModel::getPreNextStory($id);
+        // 使用抛出异常处理
+        if(empty($PreNext_story)){
+            throw new MissException([
+                'msg' => 'story not found'
+            ]);
+        }else{
+            $this->show($PreNext_story);
+        }
     }
 }
