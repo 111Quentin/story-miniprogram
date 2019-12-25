@@ -72,8 +72,41 @@ class Story extends BaseController{
                 'current_page' => $CateStory->currentPage(),
                 'data' => []
             ];
+        }else{
+            $data = $CateStory->toArray();
+            $this->show($data);
         }
-        $data = $CateStory->toArray();
-        $this->show($data);
+    }
+
+    /**
+     * 获取单个故事
+     * @param [type] $id
+     * @return void
+     */
+    public function getOne($id){
+        (new IDMustBePositiveInt())->goCheck();
+        $story = StoryModel::getStoryDetail($id);
+         // 使用抛出异常处理
+         if(empty($story)){
+            throw new MissException([
+                'msg' => 'story not found'
+            ]);
+        }else{
+            $this->show($story);
+        }
+    }
+
+
+    /**
+     * 获取上一篇和下一篇故事
+     * @param [type] $id
+     * @return void
+     */
+    public function getPreNext($id){
+        // id校验
+        (new IDMustBePositiveInt())->goCheck();
+        $pre_story = StoryModel::getPreNextStory($id);
+         
+        echo json_encode($pre_story);
     }
 }

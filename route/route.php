@@ -25,7 +25,8 @@ Route::get('api/StoryCategory','api/StoryCat/getCategory');
 Route::get('api/HotStory/paginate', 'api/Story/getHotStory');
 Route::get('api/TopStory/paginate', 'api/Story/getTopStory');
 Route::get('api/Story/by_category/paginate','api/Story/getByCategory');
-
+Route::get('api/Story/getprenext','api/Story/getPreNext');
+Route::get('api/Story','api/Story/getOne');
 
 
 

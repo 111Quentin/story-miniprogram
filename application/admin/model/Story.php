@@ -93,4 +93,30 @@ class Story extends ValidateModel
         }
     }
 
+    /**
+     * 获取单个故事
+     * @param [type] $id
+     * @return void
+     */
+    public static function getStoryDetail($id){
+        $story = self::where('id',$id)->find();
+        return $story ? $story : [];
+    }
+
+    /**
+     * 获取上一篇故事和下一篇故事
+     * @param [type] $id
+     * @return void
+     */
+    public static function getPreNextStory($id){
+        $PreNext_story = array();
+        $pre_story = self::where('id','<',$id)->order('id desc')->find();
+        $next_story = self::where('id','>',$id)->order('id asc')->find();
+        $PreNext_story = array(
+            'pre'   =>   $pre_story,
+            'next'  =>   $next_story
+        );
+        return $PreNext_story ? $PreNext_story : [];
+    }
+
 }
