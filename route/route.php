@@ -32,11 +32,14 @@ Route::get('api/Story','api/Story/getOne');
 
 
 //Token
-// Route::post('api/token/user', 'api/Token/getToken');
-// Route::post('api/token/app', 'api/Token/getAppToken');
-// Route::post('api/token/verify', 'api/Token/verifyToken');
+Route::post('api/token/user', 'api/Token/getToken');
+Route::post('api/token/app', 'api/Token/getAppToken');
+Route::post('api/token/verify', 'api/Token/verifyToken');
 
 
+
+// UserInfo
+Route::get('api/UserInfo/create', 'api/UserInfo/createUser');
 
 
 

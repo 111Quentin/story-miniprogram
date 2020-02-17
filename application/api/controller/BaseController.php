@@ -22,8 +22,10 @@ class BaseController extends Controller{
             $res['code'] = '404';
             $res['msg'] = '获取数据有误!';
             echo json_encode($res);
+            exit;
         }else{
             echo json_encode($res);
+            exit;
         }
     }
 } 

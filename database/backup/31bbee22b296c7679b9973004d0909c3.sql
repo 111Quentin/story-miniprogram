@@ -25,10 +25,11 @@ CREATE TABLE `shop_admin_message` (
   PRIMARY KEY (`id`),
   KEY `sender_id` (`sender_id`,`receiver_id`),
   KEY `receiver_id` (`receiver_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 insert into `shop_admin_message`(`id`,`sender_id`,`receiver_id`,`title`,`message`,`is_readed`,`send_time`) values('3','1','2','sdfsdfs','sdfdagsdfgsdf枯相辅相成要要林要要要顶戴夺夺在地一一一一寺地地地寺地地','1','1534727698');
 insert into `shop_admin_message`(`id`,`sender_id`,`receiver_id`,`title`,`message`,`is_readed`,`send_time`) values('5','1','3','595959','59656','0','1575421530');
 insert into `shop_admin_message`(`id`,`sender_id`,`receiver_id`,`title`,`message`,`is_readed`,`send_time`) values('7','3','1','死鬼','小姐姐积极','0','1575853725');
+insert into `shop_admin_message`(`id`,`sender_id`,`receiver_id`,`title`,`message`,`is_readed`,`send_time`) values('8','3','1','留言','圣诞节快乐呀','0','1577275206');
 
 DROP TABLE IF EXISTS `shop_ads`;
 CREATE TABLE `shop_ads` (
@@ -1723,11 +1724,11 @@ CREATE TABLE `shop_auth_admin` (
   `last_login_time` int(11) DEFAULT '0' COMMENT '最后登陆时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-insert into `shop_auth_admin`(`id`,`username`,`password`,`notebook`,`status`,`is_super_admin`,`last_login_time`) values('1','admin','e10adc3949ba59abbe56e057f20f883e','大鱼快要拍毕业照了喂！！！','1','1','1576460622');
+insert into `shop_auth_admin`(`id`,`username`,`password`,`notebook`,`status`,`is_super_admin`,`last_login_time`) values('1','admin','e10adc3949ba59abbe56e057f20f883e','大鱼快要拍毕业照了喂！！！','1','1','1581649505');
 insert into `shop_auth_admin`(`id`,`username`,`password`,`notebook`,`status`,`is_super_admin`,`last_login_time`) values('2','myadmin1','e10adc3949ba59abbe56e057f20f883e','','1','0','1534870922');
 insert into `shop_auth_admin`(`id`,`username`,`password`,`notebook`,`status`,`is_super_admin`,`last_login_time`) values('3','quentin','e10adc3949ba59abbe56e057f20f883e','死咯，又靓佐
 从开始到永久
-我想要','1','0','1576462432');
+我想要','1','0','1581649415');
 
 DROP TABLE IF EXISTS `shop_auth_admin_role`;
 CREATE TABLE `shop_auth_admin_role` (
@@ -2683,15 +2684,18 @@ CREATE TABLE `shop_story` (
   `created_time` int(11) NOT NULL DEFAULT '0',
   `updated_time` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
-insert into `shop_story`(`id`,`title`,`content`,`desc`,`story_cat_id`,`pic`,`is_hot`,`is_top`,`pt_path`,`yy_path`,`created_time`,`updated_time`) values('1','睡前故事','热入额URIE我锐步','热热热热r','8','/uploads/story/\\20191208\\a9c987bcb11539bf1b19bc08a092b9f1.jpg','1','1','/uploads/music/pt/\\20191208\\825c3373ba7bb1a065007cde90720b17.m4a','/uploads/music/yy/\\20191208\\570e91bffaf24617a2d6ef519e3f586b.m4a','1575801348','1575801348');
-insert into `shop_story`(`id`,`title`,`content`,`desc`,`story_cat_id`,`pic`,`is_hot`,`is_top`,`pt_path`,`yy_path`,`created_time`,`updated_time`) values('2','恐怖故事','饭店附近的空间发快递积分','护额u覅诶陪老婆老婆','7','/uploads/story/\\20191208\\453bc56fa1dbca83081e97a8d08791c6.jpg','1','1','/uploads/music/pt/\\20191208\\0794248bb2fa68c893006aebf60615a2.m4a','/uploads/music/yy/\\20191208\\3e44779caf63304a2f76e2e15ce9cd4b.m4a','1575801417','1575801417');
-insert into `shop_story`(`id`,`title`,`content`,`desc`,`story_cat_id`,`pic`,`is_hot`,`is_top`,`pt_path`,`yy_path`,`created_time`,`updated_time`) values('3','古代历史','福达合金好机会冠军飞将','金风科技打开就分开的看法','9','/uploads/story/\\20191208\\7705d6dc86e662ab3a13dc64f1970116.jpg','1','1','/uploads/music/pt/\\20191208\\10c20a8a5f7cfbfa9e777bfd886ab682.m4a','/uploads/music/yy/\\20191208\\bae4b19f1940898962235a4f2e627cff.m4a','1575801499','1575801499');
-insert into `shop_story`(`id`,`title`,`content`,`desc`,`story_cat_id`,`pic`,`is_hot`,`is_top`,`pt_path`,`yy_path`,`created_time`,`updated_time`) values('4','民间故事','近段时间第四对对对','第三季度计算机第三季度','10','/uploads/story/\\20191208\\e5420d7d54563c15b0d1ffd33844a004.jpg','0','1','/uploads/music/pt/\\20191208\\1c5618d407b6419e3d20114e760e6732.m4a','/uploads/music/yy/\\20191208\\98bfa260dc3e2eb45e4a2b74fb1f6e8e.m4a','1575801559','1575801559');
-insert into `shop_story`(`id`,`title`,`content`,`desc`,`story_cat_id`,`pic`,`is_hot`,`is_top`,`pt_path`,`yy_path`,`created_time`,`updated_time`) values('5','相声','辅导辅导辅导辅导费','的辅导辅导辅导辅导','12','/uploads/story/\\20191208\\4559edfab8ae3a4f6db8ff1fbe2d2990.jpg','0','1','/uploads/music/pt/\\20191208\\aa1c119b7b82d0ea5b1cc62da50ce4f8.m4a','/uploads/music/yy/\\20191208\\3ad339be7f25406512fa6cc63c37787a.m4a','1575801609','1575801609');
-insert into `shop_story`(`id`,`title`,`content`,`desc`,`story_cat_id`,`pic`,`is_hot`,`is_top`,`pt_path`,`yy_path`,`created_time`,`updated_time`) values('6','现代科技','迪欧斯殴打搜到搜你懂','大家圣诞节是空间打开','11','/uploads/story/\\20191208\\cda80778477883ecb413c483b4287a1b.jpg','1','1','/uploads/music/pt/\\20191208\\4ec31c98d3f0c0ca44ebf73ca1952aca.m4a','/uploads/music/yy/\\20191208\\8d803eec9b40522b91805b3c3bfcac7a.m4a','1575801680','1575801680');
-insert into `shop_story`(`id`,`title`,`content`,`desc`,`story_cat_id`,`pic`,`is_hot`,`is_top`,`pt_path`,`yy_path`,`created_time`,`updated_time`) values('7','早间故事','<p>公交卡福建高考几分科技感开发</p>','京津冀忘记叫','13','/uploads/story/\\20191209\\27772b2fe85bca756e1179555209ac36.jpg','0','1','/uploads/music/pt/\\20191209\\f62f2a974db314389b9c9ae54f7c3812.m4a','/uploads/music/yy/\\20191209\\752d2b910b29916a0e1235679d1acea7.mp3','1575856066','1575856066');
-insert into `shop_story`(`id`,`title`,`content`,`desc`,`story_cat_id`,`pic`,`is_hot`,`is_top`,`pt_path`,`yy_path`,`created_time`,`updated_time`) values('8','5454545','fdfdfdfdfdfdf','fdfdfd','11','/uploads/\\20191211\\40475468d0df81cdb905249376354c51.jpg','1','1','/uploads/music/pt\\20191211\\d997d0c4459aa97cf3e5cef783958b91.m4a','/uploads/music/yy\\20191211\\7a3d91949d42f5aa0dcbb50b753df574.m4a','1576044171','1576044171');
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+insert into `shop_story`(`id`,`title`,`content`,`desc`,`story_cat_id`,`pic`,`is_hot`,`is_top`,`pt_path`,`yy_path`,`created_time`,`updated_time`) values('1','睡前故事','热入额URIE我锐步','热热热热r','8','/uploads/story/20191208/a9c987bcb11539bf1b19bc08a092b9f1.jpg','1','1','/uploads/music/pt/20191208/825c3373ba7bb1a065007cde90720b17.m4a','/uploads/music/yy/20191208/570e91bffaf24617a2d6ef519e3f586b.m4a','1575801348','1575801348');
+insert into `shop_story`(`id`,`title`,`content`,`desc`,`story_cat_id`,`pic`,`is_hot`,`is_top`,`pt_path`,`yy_path`,`created_time`,`updated_time`) values('2','恐怖故事','饭店附近的空间发快递积分','护额u覅诶陪老婆老婆','7','/uploads/story/20191208/453bc56fa1dbca83081e97a8d08791c6.jpg','1','1','/uploads/music/pt/20191208/0794248bb2fa68c893006aebf60615a2.m4a','/uploads/music/yy/20191208/3e44779caf63304a2f76e2e15ce9cd4b.m4a','1575801417','1575801417');
+insert into `shop_story`(`id`,`title`,`content`,`desc`,`story_cat_id`,`pic`,`is_hot`,`is_top`,`pt_path`,`yy_path`,`created_time`,`updated_time`) values('3','古代历史','福达合金好机会冠军飞将','金风科技打开就分开的看法','9','/uploads/story/20191208/7705d6dc86e662ab3a13dc64f1970116.jpg','1','1','/uploads/music/pt/20191208/10c20a8a5f7cfbfa9e777bfd886ab682.m4a','/uploads/music/yy/20191208/bae4b19f1940898962235a4f2e627cff.m4a','1575801499','1575801499');
+insert into `shop_story`(`id`,`title`,`content`,`desc`,`story_cat_id`,`pic`,`is_hot`,`is_top`,`pt_path`,`yy_path`,`created_time`,`updated_time`) values('4','民间故事','近段时间第四对对对','第三季度计算机第三季度','10','/uploads/story/20191208/e5420d7d54563c15b0d1ffd33844a004.jpg','0','1','/uploads/music/pt/20191208/1c5618d407b6419e3d20114e760e6732.m4a','/uploads/music/yy/20191208/98bfa260dc3e2eb45e4a2b74fb1f6e8e.m4a','1575801559','1575801559');
+insert into `shop_story`(`id`,`title`,`content`,`desc`,`story_cat_id`,`pic`,`is_hot`,`is_top`,`pt_path`,`yy_path`,`created_time`,`updated_time`) values('5','相声','辅导辅导辅导辅导费','的辅导辅导辅导辅导','12','/uploads/story/20191208/4559edfab8ae3a4f6db8ff1fbe2d2990.jpg','0','1','/uploads/music/pt/20191208/aa1c119b7b82d0ea5b1cc62da50ce4f8.m4a','/uploads/music/yy/20191208/3ad339be7f25406512fa6cc63c37787a.m4a','1575801609','1575801609');
+insert into `shop_story`(`id`,`title`,`content`,`desc`,`story_cat_id`,`pic`,`is_hot`,`is_top`,`pt_path`,`yy_path`,`created_time`,`updated_time`) values('6','现代科技','迪欧斯殴打搜到搜你懂','大家圣诞节是空间打开','11','/uploads/story/20191208/cda80778477883ecb413c483b4287a1b.jpg','1','1','/uploads/music/pt/20191208/4ec31c98d3f0c0ca44ebf73ca1952aca.m4a','/uploads/music/yy/20191208/8d803eec9b40522b91805b3c3bfcac7a.m4a','1575801680','1575801680');
+insert into `shop_story`(`id`,`title`,`content`,`desc`,`story_cat_id`,`pic`,`is_hot`,`is_top`,`pt_path`,`yy_path`,`created_time`,`updated_time`) values('7','早间故事',' <p>公交卡福建高考几分科技感开发</p>','京津冀忘记叫','13','/uploads/story/20191209/27772b2fe85bca756e1179555209ac36.jpg','0','1','/uploads/music/pt/20191209/f62f2a974db314389b9c9ae54f7c3812.m4a','/uploads/music/yy/20191209/752d2b910b29916a0e1235679d1acea7.mp3','1575856066','1577326127');
+insert into `shop_story`(`id`,`title`,`content`,`desc`,`story_cat_id`,`pic`,`is_hot`,`is_top`,`pt_path`,`yy_path`,`created_time`,`updated_time`) values('8','5454545','fdfdfdfdfdfdf','fdfdfd','11','/uploads/20191211/40475468d0df81cdb905249376354c51.jpg','1','1','/uploads/music/pt/20191211/d997d0c4459aa97cf3e5cef783958b91.m4a','/uploads/music/yy/20191211/7a3d91949d42f5aa0dcbb50b753df574.m4a','1576044171','1576044171');
+insert into `shop_story`(`id`,`title`,`content`,`desc`,`story_cat_id`,`pic`,`is_hot`,`is_top`,`pt_path`,`yy_path`,`created_time`,`updated_time`) values('9','不知道什么故事',' 发的发的发的方法对方','大幅度发的','8','/uploads/20191216/1710ec0702aff6ff92946d9bfdf31ad0.jpg','1','1','/uploads/music/pt/20191216/2284db889040511710960a754e65449f.m4a','/uploads/music/yy/20191216/6eeb7f9a8a6c7a3791f8c768b461289a.mp3','1576481763','1576481773');
+insert into `shop_story`(`id`,`title`,`content`,`desc`,`story_cat_id`,`pic`,`is_hot`,`is_top`,`pt_path`,`yy_path`,`created_time`,`updated_time`) values('10','嘻嘻嘻','热日哦饿哦日偶尔','我我偶尔or偶尔 ','8','/uploads/20191216/bbd9584aa7ce8f8fe7733956e40a7f8d.jpg','1','0','/uploads/music/pt/20191216/4be4fa9d36499072d4b5d52e57e55407.m4a','/uploads/music/yy/20191216/545fb42e41e90c0e0a187b097e98fe22.m4a','1576482111','1576482111');
+insert into `shop_story`(`id`,`title`,`content`,`desc`,`story_cat_id`,`pic`,`is_hot`,`is_top`,`pt_path`,`yy_path`,`created_time`,`updated_time`) values('11','uUI我觉得我IDi',' <p> 温恩翁无</p>','喂喂喂无','8','/uploads/story/20191216/c676b61e30b212a88d595112bc665aa5.jpg','1','0','/uploads/music/pt/20191216/8d65411a4e21db161d9a2c6d03c578cd.mp3','/uploads/music/yy/20191216/c40cf4cbc1eae516edcbcc7e20e7162b.m4a','1576483997','1577327500');
 
 DROP TABLE IF EXISTS `shop_story_cat`;
 CREATE TABLE `shop_story_cat` (
@@ -2703,13 +2707,38 @@ CREATE TABLE `shop_story_cat` (
   `updated_time` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`sid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
-insert into `shop_story_cat`(`sid`,`type_name`,`desc`,`pic`,`created_time`,`updated_time`) values('7','恐怖故事','让你不得安睡的鬼故事','/uploads/story/\\20191208\\389a8b1104146a608a5261a5a3a20a72.jpg','1575633708','1575797727');
-insert into `shop_story_cat`(`sid`,`type_name`,`desc`,`pic`,`created_time`,`updated_time`) values('8','睡前故事','帮助宝贝安心入眠','/uploads/story/\\20191208\\4dd1cddb18ca1474183b6511422b65ef.jpg','1575793473','1575797309');
-insert into `shop_story_cat`(`sid`,`type_name`,`desc`,`pic`,`created_time`,`updated_time`) values('9','古代历史','学习历史知识','/uploads/story/\\20191208\\8a6401dcc165b40666545a636deb7adb.jpg','1575793514','1575793514');
-insert into `shop_story_cat`(`sid`,`type_name`,`desc`,`pic`,`created_time`,`updated_time`) values('10','民间故事','游戏且罕见的民间故事','/uploads/story/\\20191208\\9060ab62a3f650e267f3ae53d37957aa.jpg','1575797582','1575797582');
-insert into `shop_story_cat`(`sid`,`type_name`,`desc`,`pic`,`created_time`,`updated_time`) values('11','现代科技','让你接近先进技术前沿','/uploads/story/\\20191208\\f6223ce99bfc28c459f2b6cf54808944.jpg','1575797633','1575797633');
-insert into `shop_story_cat`(`sid`,`type_name`,`desc`,`pic`,`created_time`,`updated_time`) values('12','相声','让你心情愉悦的段子','/uploads/story/\\20191208\\3825d857963e1a6d5174d81cbce623e8.jpg','1575797679','1575797679');
-insert into `shop_story_cat`(`sid`,`type_name`,`desc`,`pic`,`created_time`,`updated_time`) values('13','早间故事','早上好','/uploads/story/\\20191209\\d0ea4b92a6e4868cd68bcfe899dc85b6.jpg','1575855856','1575855856');
+insert into `shop_story_cat`(`sid`,`type_name`,`desc`,`pic`,`created_time`,`updated_time`) values('7','恐怖故事','让你不得安睡的鬼故事','/uploads/story/20191208/389a8b1104146a608a5261a5a3a20a72.jpg','1575633708','1575797727');
+insert into `shop_story_cat`(`sid`,`type_name`,`desc`,`pic`,`created_time`,`updated_time`) values('8','睡前故事','帮助宝贝安心入眠','/uploads/story/20191208/4dd1cddb18ca1474183b6511422b65ef.jpg','1575793473','1575797309');
+insert into `shop_story_cat`(`sid`,`type_name`,`desc`,`pic`,`created_time`,`updated_time`) values('9','古代历史','学习历史知识','/uploads/story/20191208/8a6401dcc165b40666545a636deb7adb.jpg','1575793514','1575793514');
+insert into `shop_story_cat`(`sid`,`type_name`,`desc`,`pic`,`created_time`,`updated_time`) values('10','民间故事','游戏且罕见的民间故事','/uploads/story/20191208/9060ab62a3f650e267f3ae53d37957aa.jpg','1575797582','1575797582');
+insert into `shop_story_cat`(`sid`,`type_name`,`desc`,`pic`,`created_time`,`updated_time`) values('11','现代科技','让你接近先进技术前沿','/uploads/story/20191208/f6223ce99bfc28c459f2b6cf54808944.jpg','1575797633','1575797633');
+insert into `shop_story_cat`(`sid`,`type_name`,`desc`,`pic`,`created_time`,`updated_time`) values('12','相声','让你心情愉悦的段子','/uploads/story/20191208/3825d857963e1a6d5174d81cbce623e8.jpg','1575797679','1575797679');
+insert into `shop_story_cat`(`sid`,`type_name`,`desc`,`pic`,`created_time`,`updated_time`) values('13','早间故事','早上好','/uploads/story/20191209/d0ea4b92a6e4868cd68bcfe899dc85b6.jpg','1575855856','1575855856');
+
+DROP TABLE IF EXISTS `shop_third_app`;
+CREATE TABLE `shop_third_app` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `app_id` varchar(64) NOT NULL COMMENT '应用app_id',
+  `app_secret` varchar(64) NOT NULL COMMENT '应用secret',
+  `app_description` varchar(100) DEFAULT NULL COMMENT '应用程序描述',
+  `delete_time` int(11) DEFAULT NULL,
+  `update_time` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='访问API的各应用账号密码表';
+
+DROP TABLE IF EXISTS `shop_user`;
+CREATE TABLE `shop_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `openid` varchar(50) NOT NULL,
+  `nickname` varchar(50) DEFAULT NULL,
+  `extend` varchar(255) DEFAULT NULL,
+  `delete_time` int(11) DEFAULT NULL,
+  `create_time` int(11) DEFAULT NULL COMMENT '注册时间',
+  `update_time` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `openid` (`openid`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+insert into `shop_user`(`id`,`openid`,`nickname`,`extend`,`delete_time`,`create_time`,`update_time`) values('1','oM4fE5Fowh0zfG04ELrnBiFf_cSE','','','','1577968519','1577968519');
 
 DROP TABLE IF EXISTS `shop_users`;
 CREATE TABLE `shop_users` (
@@ -2749,4 +2778,17 @@ CREATE TABLE `shop_vote` (
 insert into `shop_vote`(`id`,`goods_id`,`uid`,`content`,`addtime`) values('1','11','11','dsffddsfds','2010');
 insert into `shop_vote`(`id`,`goods_id`,`uid`,`content`,`addtime`) values('2','11','11','这个是评论内容','2010');
 insert into `shop_vote`(`id`,`goods_id`,`uid`,`content`,`addtime`) values('3','14','11','sfadsdsdf','2010');
+
+DROP TABLE IF EXISTS `user_info`;
+CREATE TABLE `user_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(30) NOT NULL COMMENT '用户名',
+  `mobile` varchar(20) NOT NULL COMMENT '手机号',
+  `sex` tinyint(1) NOT NULL DEFAULT '1' COMMENT '性别 1为男 2为女',
+  `created_time` int(11) DEFAULT NULL,
+  `user_id` int(11) NOT NULL COMMENT '外键',
+  `update_time` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
