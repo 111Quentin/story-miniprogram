@@ -41,6 +41,10 @@ Route::post('api/token/verify', 'api/Token/verifyToken');
 // UserInfo
 Route::get('api/UserInfo/create', 'api/UserInfo/createUser');
 
+// StoryRecord
+Route::get('api/StoryRecord/create', 'api/StoryRecord/createRecord');
+Route::get('api/StoryRecord/select', 'api/StoryRecord/select');
+
 
 
 

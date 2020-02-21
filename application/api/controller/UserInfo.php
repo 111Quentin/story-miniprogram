@@ -38,7 +38,8 @@ class Userinfo extends BaseController{
             $model = new UserInfoModel();
             $res = $model->save($data);
             if($res){
-               $this->show($data,200,'用户数据保存成功！');
+               $user = UserInfoModel::getUser($data['nickname']);
+               $this->show($user,200,'用户数据保存成功！');
             }else{
                $this->show('',500,'用户数据保存失败');
             }
