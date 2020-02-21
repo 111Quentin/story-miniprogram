@@ -1,0 +1,68 @@
+{include file='head'}
+
+    <body>
+        <div class="wrap-container clearfix">
+            <div class="column-content-detail">
+                <form class="layui-form" action="/admin/UserInfo/index" method="get" >
+                    <div class="email-tool-btn clearfix">
+                        <div style="float:right">
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <input type="text" name="nickName" lay-verify="required" placeholder="搜索用户昵称" value="{$nickName}"  class="layui-input">
+                                </div>
+                                <div class="layui-inline">
+                                    <button class="layui-btn layui-btn-normal search-btn">搜索</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+                <form action='' method='post' id="batchdel-btn" class="layui-form">
+                    <div class="layui-form" id="table-list">
+                        <table class="layui-table" >
+                            <colgroup>
+                                <col width="50">
+                                <col width="100">
+                                <col>
+                                <col width="150">
+                                <col width="150">
+                                <col width="150">
+                                <col width="150">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>昵称</th>
+                                    <th>性别</th>
+                                    <th>头像</th>
+                                    <th>所在地区</th>
+                                    <th>创建时间</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {foreach name='userinfo' item='user' empty="<tr><td colspan=5>暂无数据<td></tr>"}
+                                <tr>
+                                    <td>{$user.id}</td>
+                                    <td>{$user.nickName}</td>
+                                    <td>{if $user.gender == 1}男 {else /}女 {/if}</td>
+                                    <td><img src="{$user.avatarUrl}"  layer-src="{$user.avatarUrl}"  /></td>
+                                    <td>{$user.country}{$user.province}{$user.city}</td>
+                                    <td>{$user.create_time|date='Y-m-d'}</td>
+                                </tr>
+                                {/foreach}
+                            </tbody>
+                        </table>
+
+                        <div style='text-align: right;'>
+                            {$page|raw}
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+
+</html>
