@@ -115,4 +115,12 @@ class Story extends BaseController{
             $this->show($PreNext_story);
         }
     }
+
+    /**
+     * 根据故事标题查询故事
+     */
+    public function getByTitle($title){
+        $story = StoryModel::where('title','like','%' . $title . '%')->select()->toArray();
+        $this->show($story);
+    }
 }
