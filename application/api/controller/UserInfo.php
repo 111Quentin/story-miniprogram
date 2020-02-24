@@ -21,7 +21,7 @@ class Userinfo extends BaseController{
     
      public function createUser(){
          $data = array();
-         $data['nickname'] = $_REQUEST['nickname'];
+         $data['nickName'] = $_REQUEST['nickName'];
          $data['gender'] = $_REQUEST['gender'];
          $data['country'] = $_REQUEST['country'];
          $data['province'] = $_REQUEST['province'];
@@ -30,7 +30,7 @@ class Userinfo extends BaseController{
          $data['create_time'] = time();
 
          // 判断是否入库
-         $user = UserInfoModel::getUser($data['nickname']);
+         $user = UserInfoModel::getUser($data['nickName']);
          if($user){
             $this->show($user,304,'用户数据已入库!');
          }else{
@@ -38,7 +38,7 @@ class Userinfo extends BaseController{
             $model = new UserInfoModel();
             $res = $model->save($data);
             if($res){
-               $user = UserInfoModel::getUser($data['nickname']);
+               $user = UserInfoModel::getUser($data['nickName']);
                $this->show($user,200,'用户数据保存成功！');
             }else{
                $this->show('',500,'用户数据保存失败');
