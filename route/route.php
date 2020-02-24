@@ -16,7 +16,6 @@
 //Banner
 Route::get('api/banner', 'api/Banner/getBanner');
 
-
 // StoryCategory
 Route::get('api/StoryCategory/all','api/StoryCat/getAllCategories');
 Route::get('api/StoryCategory','api/StoryCat/getCategory');
@@ -29,14 +28,10 @@ Route::get('api/Story/getprenext','api/Story/getPreNext');
 Route::get('api/Story','api/Story/getOne');
 Route::get('api/search','api/Story/getByTitle');
 
-
-
 //Token
 Route::post('api/token/user', 'api/Token/getToken');
 Route::post('api/token/app', 'api/Token/getAppToken');
 Route::post('api/token/verify', 'api/Token/verifyToken');
-
-
 
 // UserInfo
 Route::get('api/UserInfo/create', 'api/UserInfo/createUser');
@@ -46,16 +41,3 @@ Route::get('api/StoryRecord/create', 'api/StoryRecord/createRecord');
 Route::get('api/StoryRecord/select', 'api/StoryRecord/select');
 
 
-
-
-
-
-// Route::get('think', function () {
-//     return 'hello,ThinkPHP5!';
-// });
-
-// Route::get('hello/:name', 'index/hello');
-
-// return [
-
-// ];
